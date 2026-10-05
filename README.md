@@ -14,4 +14,4 @@ V4 is a no-code creator interface:
 - Text/settings share link
 - Mobile responsive
 
-The selected photos/music are kept locally and are intended for the browser/download workflow; they are not embedded in share URLs.
+The selected photos/music are kept locally and are intended for the browser/download workflow; they are not embedded in share URLs. 
