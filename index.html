@@ -2,87 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#10071c"><title>Surprise Studio ✨</title>
+<meta name="theme-color" content="#10071c"><title>Birthday Surprise Maker V5 ✨</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="toast"></div>
-
+<div id="toast" role="status"></div>
 <section id="studio">
-  <header class="topbar">
-    <div><div class="brand">🎁 <b>Surprise Studio</b></div><span class="sub">Make a birthday surprise in minutes</span></div>
-    <button id="previewTop" class="btn primary">Preview</button>
-  </header>
-
-  <div class="layout">
-    <aside class="editor">
-      <div class="steps">
-        <button class="step active" data-step="0">1<span>Basics</span></button>
-        <button class="step" data-step="1">2<span>Style</span></button>
-        <button class="step" data-step="2">3<span>Memories</span></button>
-        <button class="step" data-step="3">4<span>Surprise</span></button>
-      </div>
-
-      <div class="formstep active" data-panel="0">
-        <h1>Who is this for? 💖</h1><p>Start with the basics.</p>
-        <label>Birthday person's name<input id="name" maxlength="36" placeholder="Pinki"></label>
-        <label>Your name<input id="from" maxlength="36" placeholder="Umesh"></label>
-        <label>Birthday date<input id="date" maxlength="30" placeholder="23 October"></label>
-        <label>Main message<textarea id="message" maxlength="450" rows="5" placeholder="Write something heartfelt..."></textarea></label>
-        <button class="btn next">Continue →</button>
-      </div>
-
-      <div class="formstep" data-panel="1">
-        <h1>Pick the vibe 🎨</h1><p>Choose a look for the surprise.</p>
-        <div class="themegrid">
-          <button class="theme active" data-theme="midnight">🌙<b>Midnight</b><small>Dreamy purple</small></button>
-          <button class="theme" data-theme="rose">🌹<b>Rose</b><small>Soft & romantic</small></button>
-          <button class="theme" data-theme="ocean">🌊<b>Ocean</b><small>Blue starlight</small></button>
-          <button class="theme" data-theme="gold">✨<b>Golden</b><small>Warm party</small></button>
-          <button class="theme" data-theme="garden">🌸<b>Garden</b><small>Fresh & sweet</small></button>
-          <button class="theme" data-theme="night">🖤<b>Elegant</b><small>Black & gold</small></button>
-        </div>
-        <label>Button text<input id="buttonText" maxlength="28" placeholder="Open your surprise"></label>
-        <div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div>
-      </div>
-
-      <div class="formstep" data-panel="2">
-        <h1>Add memories 📸</h1><p>Photos stay in your browser until you download the final file.</p>
-        <label class="upload">📷 Choose up to 8 photos<input id="photos" type="file" accept="image/*" multiple></label>
-        <div id="thumbs"></div>
-        <label class="upload">🎵 Add background music<input id="music" type="file" accept="audio/*"></label>
-        <div id="assets" class="muted">No files selected yet.</div>
-        <div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div>
-      </div>
-
-      <div class="formstep" data-panel="3">
-        <h1>Add the final touch 💌</h1><p>Make the ending personal.</p>
-        <label>Secret message<textarea id="secret" maxlength="300" rows="4" placeholder="A secret message just for you..."></textarea></label>
-        <label>Reasons they're special<textarea id="reasons" maxlength="300" rows="4" placeholder="Your smile, your kindness..."></textarea></label>
-        <label class="toggle"><input id="hearts" type="checkbox" checked> Floating hearts</label>
-        <label class="toggle"><input id="confetti" type="checkbox" checked> Confetti finale</label>
-        <div class="row"><button class="btn ghost backStep">← Back</button><button id="make" class="btn primary">Create Surprise ✨</button></div>
-      </div>
-    </aside>
-
-    <section class="live">
-      <div class="phone">
-        <div class="phonebar"><span>Live preview</span><span>●</span></div>
-        <div id="mini"></div>
-      </div>
-    </section>
-  </div>
-</section>
-
-<section id="experience" class="hidden">
-  <div class="sky"></div><div id="floaters"></div>
-  <button id="closeExp" class="close">×</button><div id="dots"></div>
-  <main id="experienceCard"></main>
-  <div class="experienceNav"><button id="prev">←</button><button id="next">→</button></div>
-  <audio id="audio" loop></audio>
-</section>
-
+<header class="topbar"><div><div class="brand">🎁 <b>Surprise Studio</b><span class="version">V5</span></div><span class="sub">No-code birthday surprise maker</span></div><div class="topActions"><button id="save" class="btn ghost small">Save</button><button id="share" class="btn ghost small">Share</button><button id="export" class="btn primary small">Export</button><button id="previewTop" class="btn primary">Preview</button></div></header>
+<div class="layout">
+<aside class="editor">
+<div class="steps"><button class="step active" data-step="0">1<span>Basics</span></button><button class="step" data-step="1">2<span>Style</span></button><button class="step" data-step="2">3<span>Photos</span></button><button class="step" data-step="3">4<span>Final</span></button></div>
+<div class="formstep active" data-panel="0"><h1>Who is this for? 💖</h1><p>Everything updates live in the preview.</p><label>Birthday person's name<input id="name" maxlength="36" placeholder="Pinki"></label><label>Your name<input id="from" maxlength="36" placeholder="Umesh"></label><label>Birthday date<input id="date" maxlength="30" placeholder="23 October"></label><label>Main message<textarea id="message" maxlength="500" rows="5" placeholder="Write something heartfelt..."></textarea></label><label>Language<select id="language"><option value="en">English</option><option value="hi">Hindi</option><option value="mix">Hinglish</option></select></label><button class="btn next">Continue →</button></div>
+<div class="formstep" data-panel="1"><h1>Design the vibe 🎨</h1><p>Pick a template, then fine-tune the colors and font.</p><div class="themegrid"><button class="theme active" data-theme="midnight">🌙<b>Midnight</b><small>Dreamy purple</small></button><button class="theme" data-theme="rose">🌹<b>Rose</b><small>Soft romance</small></button><button class="theme" data-theme="ocean">🌊<b>Ocean</b><small>Blue starlight</small></button><button class="theme" data-theme="gold">✨<b>Golden</b><small>Warm party</small></button><button class="theme" data-theme="garden">🌸<b>Garden</b><small>Fresh & sweet</small></button><button class="theme" data-theme="night">🖤<b>Elegant</b><small>Black & gold</small></button></div><div class="customGrid"><label>Accent<input id="accent" type="color" value="#bd7cff"></label><label>Highlight<input id="highlight" type="color" value="#ff78b7"></label><label>Font<select id="font"><option value="playfair">Playfair Display</option><option value="poppins">Poppins</option><option value="vibes">Great Vibes</option><option value="pacifico">Pacifico</option></select></label><label>Button text<input id="buttonText" maxlength="32" placeholder="Let's celebrate 🎉"></label></div><div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div></div>
+<div class="formstep" data-panel="2"><h1>Make it personal 📸</h1><p>Add photos and optional music. Everything is embedded when you export.</p><label class="upload">📷 Choose up to 8 photos<input id="photos" type="file" accept="image/*" multiple></label><div id="thumbs"></div><label class="upload">🎵 Add background music<input id="music" type="file" accept="audio/*"></label><div id="assets" class="muted">No files selected yet.</div><label class="toggle"><input id="autoplay" type="checkbox" checked> Start music after first tap</label><div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div></div>
+<div class="formstep" data-panel="3"><h1>Add the final touch 💌</h1><p>Choose what happens at the end.</p><label>Secret message<textarea id="secret" maxlength="400" rows="4" placeholder="A secret message just for you..."></textarea></label><label>Reasons they're special<textarea id="reasons" maxlength="400" rows="4" placeholder="Your smile, your kindness..."></textarea></label><div class="twoCol"><label class="toggle"><input id="hearts" type="checkbox" checked> Floating hearts</label><label class="toggle"><input id="confetti" type="checkbox" checked> Confetti finale</label></div><label class="toggle"><input id="gallery" type="checkbox" checked> Show photo gallery</label><div class="row"><button class="btn ghost backStep">← Back</button><button id="make" class="btn primary">Create Surprise ✨</button></div></div>
+</aside>
+<section class="live"><div class="phone"><div class="phonebar"><span>Live preview</span><span>●</span></div><div id="mini"></div></div><div class="tips">💡 <b>Tip:</b> Export creates a single HTML file you can send to someone or upload to GitHub Pages.</div></section>
+</div></section>
+<section id="experience" class="hidden"><div class="sky"></div><div id="floaters"></div><button id="closeExp" class="close">×</button><div id="dots"></div><main id="experienceCard"></main><div class="experienceNav"><button id="prev">←</button><button id="next">→</button></div><audio id="audio" loop></audio></section>
 <script src="script.js"></script>
 </body></html>
