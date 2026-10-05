@@ -1,133 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#16051e">
-<title>Happy Birthday 💗</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10071c"><title>Surprise Studio ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app" id="app">
-  <div class="stars"></div><div class="glows"></div><div class="garland"></div><div class="moon"></div>
-  <header>
-    <button class="circle" id="prev">‹</button>
-    <div class="dots" id="dots"></div>
-    <button class="close" id="closePreview">× <span>Close preview</span></button>
+<div id="toast"></div>
+
+<section id="studio">
+  <header class="topbar">
+    <div><div class="brand">🎁 <b>Surprise Studio</b></div><span class="sub">Make a birthday surprise in minutes</span></div>
+    <button id="previewTop" class="btn primary">Preview</button>
   </header>
 
-  <main id="deck">
-    <section class="page active">
-      <div class="content center">
-        <div class="kicker">A LITTLE SURPRISE FOR YOU</div>
-        <h1>Happy Birthday,<br><i class="name">Pinki</i> 💗</h1>
-        <div class="date">♡ &nbsp; 23 October &nbsp; ♡</div>
-        <p class="sub">For the world's best girlfriend ✨</p>
-        <button class="cta next">Let's celebrate 🎉</button>
-        <div class="made">MADE JUST FOR YOU ♡</div>
+  <div class="layout">
+    <aside class="editor">
+      <div class="steps">
+        <button class="step active" data-step="0">1<span>Basics</span></button>
+        <button class="step" data-step="1">2<span>Style</span></button>
+        <button class="step" data-step="2">3<span>Memories</span></button>
+        <button class="step" data-step="3">4<span>Surprise</span></button>
       </div>
-    </section>
 
-    <section class="page">
-      <div class="content center">
-        <h2>Pop them all! 🎈</h2><p class="hint">Tap the balloons</p>
-        <div class="balloons" id="balloons">
-          <button class="balloon b1">💗</button><button class="balloon b2">💖</button>
-          <button class="balloon b3">💕</button><button class="balloon b4">💗</button>
-          <button class="balloon b5">💞</button>
+      <div class="formstep active" data-panel="0">
+        <h1>Who is this for? 💖</h1><p>Start with the basics.</p>
+        <label>Birthday person's name<input id="name" maxlength="36" placeholder="Pinki"></label>
+        <label>Your name<input id="from" maxlength="36" placeholder="Umesh"></label>
+        <label>Birthday date<input id="date" maxlength="30" placeholder="23 October"></label>
+        <label>Main message<textarea id="message" maxlength="450" rows="5" placeholder="Write something heartfelt..."></textarea></label>
+        <button class="btn next">Continue →</button>
+      </div>
+
+      <div class="formstep" data-panel="1">
+        <h1>Pick the vibe 🎨</h1><p>Choose a look for the surprise.</p>
+        <div class="themegrid">
+          <button class="theme active" data-theme="midnight">🌙<b>Midnight</b><small>Dreamy purple</small></button>
+          <button class="theme" data-theme="rose">🌹<b>Rose</b><small>Soft & romantic</small></button>
+          <button class="theme" data-theme="ocean">🌊<b>Ocean</b><small>Blue starlight</small></button>
+          <button class="theme" data-theme="gold">✨<b>Golden</b><small>Warm party</small></button>
+          <button class="theme" data-theme="garden">🌸<b>Garden</b><small>Fresh & sweet</small></button>
+          <button class="theme" data-theme="night">🖤<b>Elegant</b><small>Black & gold</small></button>
         </div>
-        <p class="tiny" id="balloonCount">5 balloons waiting...</p>
-        <button class="cta next">A few words for you 💌</button>
+        <label>Button text<input id="buttonText" maxlength="28" placeholder="Open your surprise"></label>
+        <div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div>
+      </div>
+
+      <div class="formstep" data-panel="2">
+        <h1>Add memories 📸</h1><p>Photos stay in your browser until you download the final file.</p>
+        <label class="upload">📷 Choose up to 8 photos<input id="photos" type="file" accept="image/*" multiple></label>
+        <div id="thumbs"></div>
+        <label class="upload">🎵 Add background music<input id="music" type="file" accept="audio/*"></label>
+        <div id="assets" class="muted">No files selected yet.</div>
+        <div class="row"><button class="btn ghost backStep">← Back</button><button class="btn next">Continue →</button></div>
+      </div>
+
+      <div class="formstep" data-panel="3">
+        <h1>Add the final touch 💌</h1><p>Make the ending personal.</p>
+        <label>Secret message<textarea id="secret" maxlength="300" rows="4" placeholder="A secret message just for you..."></textarea></label>
+        <label>Reasons they're special<textarea id="reasons" maxlength="300" rows="4" placeholder="Your smile, your kindness..."></textarea></label>
+        <label class="toggle"><input id="hearts" type="checkbox" checked> Floating hearts</label>
+        <label class="toggle"><input id="confetti" type="checkbox" checked> Confetti finale</label>
+        <div class="row"><button class="btn ghost backStep">← Back</button><button id="make" class="btn primary">Create Surprise ✨</button></div>
+      </div>
+    </aside>
+
+    <section class="live">
+      <div class="phone">
+        <div class="phonebar"><span>Live preview</span><span>●</span></div>
+        <div id="mini"></div>
       </div>
     </section>
-
-    <section class="page">
-      <div class="content center">
-        <h2>A few words for you 💌</h2><p class="hint">Tap the card to read the note</p>
-        <button class="notification" id="noteCard">
-          <span>💗</span>
-          <strong>You got my favorite<br>notification. 💕</strong>
-          <small>› MORE</small>
-        </button>
-        <div class="revealed" id="revealed">You make my ordinary days feel special. I'm so lucky to have you. ❤️</div>
-        <button class="cta next">Make a wish, Pinki ✨</button>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="content center">
-        <h2>Make a wish, <i class="name">Pinki</i> 🎂</h2><p class="hint">Tap each candle to blow it out</p>
-        <div class="cake">
-          <div class="candles">
-            <button class="candle" data-candle><span></span></button>
-            <button class="candle" data-candle><span></span></button>
-            <button class="candle" data-candle><span></span></button>
-            <button class="candle" data-candle><span></span></button>
-            <button class="candle" data-candle><span></span></button>
-          </div>
-          <div class="tier t1">HAPPY</div><div class="tier t2">BIRTHDAY</div><div class="plate"></div>
-        </div>
-        <p class="tiny" id="candleText">5 candles glowing ✨</p>
-        <button class="cta next">Your year ahead ✨</button>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="content center">
-        <h2>Your year ahead ✨</h2><p class="hint">I hope the year never lets you down</p>
-        <div class="quote-card"><small>YOUR JOURNEY</small><p>“This year brings more laughter than you can hold, more dreams than you can count, and more love than you expect.”</p><b>♡</b></div>
-        <button class="cta next">A piece of our story →</button>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="content center">
-        <h2>A piece of our story 📸</h2><p class="hint">Add your favorite photo below</p>
-        <div class="photo-frame">
-          <img src="photo.jpg" alt="Our memory" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="photo-placeholder"><span>📷</span><b>YOUR PHOTO HERE</b><small>Put your image in this folder<br>and name it <strong>photo.jpg</strong></small></div>
-          <div class="photo-caption">A memory worth keeping forever 💗</div>
-        </div>
-        <button class="cta next">One last thing ❤️</button>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="content center">
-        <div class="scroll-paper">
-          <small>A DECREE OF CELEBRATION</small>
-          <h2>Happy Birthday!</h2>
-          <p>Happy birthday my jaana 💗<br>MuJhe nhi pata meri life kya h but kya nhi par ye pakka h tu mere liye sab kuch h.</p>
-          <p>Stay the same beautiful soul you are. Keep smiling, keep dreaming, and keep being you.</p>
-          <div class="signature">Your paglu.</div>
-        </div>
-        <button class="cta next">One last thing ❤️</button>
-      </div>
-    </section>
-
-    <section class="page final">
-      <div class="content center">
-        <div class="spark">✦</div>
-        <div class="kicker">ONCE AGAIN</div>
-        <h1>Happy Birthday,<br><i class="name">Pinki</i>! 💕</h1>
-        <p class="sub">May your smile stay this bright forever.</p>
-        <div class="hearts">💗 💕 💖 💞 💗</div>
-        <button class="small-btn" id="replay">↻ Watch it again</button>
-        <button class="small-btn" id="own">Make your own 💌</button>
-      </div>
-    </section>
-  </main>
-
-  <div class="audio">
-    <button id="play">▶</button>
-    <div><b>🎙 A voice note for you</b><div class="bar"><i id="bar"></i></div></div>
   </div>
-  <audio id="voice" src="voice-note.mp3" preload="metadata"></audio>
-  <div id="confetti"></div>
-</div>
+</section>
+
+<section id="experience" class="hidden">
+  <div class="sky"></div><div id="floaters"></div>
+  <button id="closeExp" class="close">×</button><div id="dots"></div>
+  <main id="experienceCard"></main>
+  <div class="experienceNav"><button id="prev">←</button><button id="next">→</button></div>
+  <audio id="audio" loop></audio>
+</section>
+
 <script src="script.js"></script>
-</body>
-</html> 
+</body></html>
